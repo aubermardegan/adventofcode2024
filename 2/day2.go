@@ -41,7 +41,7 @@ func isSafeReportWithProblemDampener(report []int) bool {
 		levelDiff := 0
 
 		if value == previousValue {
-			if isSafeReport(copySliceRemovingElementByIndex(report, i)) || isSafeReport(copySliceRemovingElementByIndex(report, i-1)) {
+			if isSafeReportRemovingCurrentOrLastElement(report, i) {
 				return true
 			}
 			errorCount++
@@ -49,7 +49,7 @@ func isSafeReportWithProblemDampener(report []int) bool {
 
 		if desc {
 			if value > previousValue {
-				if isSafeReport(copySliceRemovingElementByIndex(report, i)) || isSafeReport(copySliceRemovingElementByIndex(report, i-1)) {
+				if isSafeReportRemovingCurrentOrLastElement(report, i) {
 					return true
 				}
 				errorCount++
@@ -57,7 +57,7 @@ func isSafeReportWithProblemDampener(report []int) bool {
 			levelDiff = previousValue - value
 		} else {
 			if value < previousValue {
-				if isSafeReport(copySliceRemovingElementByIndex(report, i)) || isSafeReport(copySliceRemovingElementByIndex(report, i-1)) {
+				if isSafeReportRemovingCurrentOrLastElement(report, i) {
 					return true
 				}
 				errorCount++
@@ -66,7 +66,7 @@ func isSafeReportWithProblemDampener(report []int) bool {
 		}
 
 		if levelDiff > 3 {
-			if isSafeReport(copySliceRemovingElementByIndex(report, i)) || isSafeReport(copySliceRemovingElementByIndex(report, i+1)) {
+			if isSafeReportRemovingCurrentOrLastElement(report, i) {
 				return true
 			}
 			errorCount++
@@ -76,6 +76,19 @@ func isSafeReportWithProblemDampener(report []int) bool {
 		return isSafeReport(report[:len(report)-1])
 	}
 	return true
+}
+
+func isSafeReportRemovingCurrentOrLastElement(report []int, index int) bool {
+	return isSafeReport(copySliceRemovingElementByIndex(report, index)) || isSafeReport(copySliceRemovingElementByIndex(report, index-1))
+}
+
+func copySliceRemovingElementByIndex(slice []int, index int) []int {
+	buf := make([]int, len(slice))
+	copy(buf, slice)
+	if index == len(slice) {
+		return buf[:len(slice)-1]
+	}
+	return append(buf[:index], buf[index+1:]...)
 }
 
 func SumSafeReports(reportMatrix [][]int) int {
@@ -126,15 +139,6 @@ func isSafeReport(report []int) bool {
 	return true
 }
 
-func copySliceRemovingElementByIndex(slice []int, index int) []int {
-	buf := make([]int, len(slice))
-	copy(buf, slice)
-	if index == len(slice) {
-		return buf[:len(slice)-1]
-	}
-	return append(buf[:index], buf[index+1:]...)
-}
-
 const inputFile = "input"
 const separator = " "
 
@@ -178,3 +182,5 @@ func extractNumbers(line string) ([]int, error) {
 
 	return numbers, nil
 }
+
+//293

@@ -17,7 +17,7 @@ func TestSumSafeReports(t *testing.T) {
 	got := SumSafeReports(matrix)
 
 	if want != got {
-		t.Errorf("TestSumDistance - want %d but got %d", want, got)
+		t.Errorf("TestSumSafeReports - want %d but got %d", want, got)
 	}
 }
 
@@ -36,6 +36,6 @@ func TestSumSafeReportsWithProblemDampener(t *testing.T) {
 	got := SumSafeReportsWithProblemDampener(matrix)
 
 	if want != got {
-		t.Errorf("TestSumDistance - want %d but got %d", want, got)
+		t.Errorf("TestSumSafeReportsWithProblemDampener - want %d but got %d", want, got)
 	}
 }
