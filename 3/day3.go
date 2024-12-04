@@ -75,11 +75,9 @@ func isEnabled(conditionalMatches []RegexMatch, index int) bool {
 	return strings.EqualFold(conditionalMatches[len(conditionalMatches)-1].Value, "do()")
 }
 
-const inputFile = "input"
-
 func main() {
 
-	inputBytes, err := os.ReadFile(inputFile)
+	inputBytes, err := os.ReadFile("input")
 	if err != nil {
 		log.Fatal("error reading file")
 	}

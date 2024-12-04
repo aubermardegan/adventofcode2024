@@ -139,13 +139,12 @@ func isSafeReport(report []int) bool {
 	return true
 }
 
-const inputFile = "input"
 const separator = " "
 
 func main() {
 	var matrix [][]int
 
-	inputBytes, err := os.ReadFile(inputFile)
+	inputBytes, err := os.ReadFile("input")
 	if err != nil {
 		log.Fatal("error reading file")
 	}

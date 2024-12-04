@@ -48,13 +48,12 @@ func SumSimilarityScore(arr1, arr2 []int) int {
 	return similarityScore
 }
 
-const inputFile = "input"
 const separator = "   "
 
 func main() {
 	var arr1, arr2 []int
 
-	inputBytes, err := os.ReadFile(inputFile)
+	inputBytes, err := os.ReadFile("input")
 	if err != nil {
 		log.Fatal("error reading file")
 	}
