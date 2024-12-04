@@ -7,8 +7,6 @@ import (
 	"os"
 )
 
-const inputFile = "input"
-
 func XSearchMAS(puzzle [][]byte) int {
 	var totalMatches int
 
@@ -185,7 +183,7 @@ func invertPuzzle(puzzle [][]byte) [][]byte {
 func main() {
 	var puzzle [][]byte
 
-	inputBytes, err := os.ReadFile(inputFile)
+	inputBytes, err := os.ReadFile("input")
 	if err != nil {
 		log.Fatal("error reading file")
 	}
@@ -195,6 +193,6 @@ func main() {
 	wordCount := SearchWord("XMAS", puzzle)
 	fmt.Printf("\nPart 1 - WordCount: %d", wordCount)
 
-	xmasCount := XSearchMAS(puzzle) //1905
+	xmasCount := XSearchMAS(puzzle)
 	fmt.Printf("\nPart 2 - X-MAS count: %d", xmasCount)
 }
