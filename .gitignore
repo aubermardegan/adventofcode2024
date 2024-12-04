@@ -23,3 +23,6 @@ go.work.sum
 
 # env file
 .env
+
+# Inputs of the challenges provided by AOC
+input
