@@ -2,9 +2,10 @@ package main
 
 import "testing"
 
+var arr1 = []int{3, 4, 2, 1, 3, 3}
+var arr2 = []int{4, 3, 5, 3, 9, 3}
+
 func TestSumDistance(t *testing.T) {
-	arr1 := []int{3, 4, 2, 1, 3, 3}
-	arr2 := []int{4, 3, 5, 3, 9, 3}
 
 	want := 11
 
@@ -16,8 +17,6 @@ func TestSumDistance(t *testing.T) {
 }
 
 func TestSumSimilarityScore(t *testing.T) {
-	arr1 := []int{3, 4, 2, 1, 3, 3}
-	arr2 := []int{4, 3, 5, 3, 9, 3}
 
 	want := 31
 
